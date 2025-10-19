@@ -5,17 +5,58 @@
     margin: 0;
 }
 
+/*
+    ----------------------------------------------
+            C O N T E N I D O  H E A D E R
+    ----------------------------------------------
+*/
+
 header{
+    position: relative;
     padding: 20px;
-    background: linear-gradient(to left, #3e0161, #9905f0);
+    background: url('/images/fondoheader2.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: 0;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #9a05f0d5, #3e0161c5);
+    background-size: 200% 100%;
+    animation: moveGradient 4s ease-in-out infinite;
+    z-index: 0;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.4rem;
+    background: linear-gradient(270deg, rgb(175,0,245), rgb(198,120,221), rgb(231,76,190), rgb(241,148,238), rgb(142,68,173), rgb(2,154,255), rgb(155,89,182));
+    background-size: 1600%;
+    animation: rainbow 10s linear infinite;
+    border-radius: 100px;
+    z-index: 2;
+}
+
+header nav,
+header .intro{
+    position: relative;
+    z-index: 3;
 }
 
 nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
-    
 }
 
 .logo img{
@@ -34,12 +75,45 @@ nav{
 .menu{
     display: flex;
     gap: 30px;
-    
+}
+
+.menu a {
+    position: relative;
+    display: inline-block;
+}
+
+.menu a span {
+    display: inline-block;
+    transition: opacity 0.3s;
+}
+
+
+.menu a::after {
+    content: attr(data-icon);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.menu a:hover span {
+    opacity: 0; 
+}
+
+.menu a:hover::after {
+    opacity: 1; 
 }
 
 .menu li{
     list-style: none;
     color: white;
+    font-weight: 600;
 }
 
 .menu li a{
@@ -47,6 +121,7 @@ nav{
     text-decoration: none;
     color: white;
     font-size: 18px;
+    font-weight: 600;
 }
 
 .intro{
@@ -61,10 +136,79 @@ nav{
     color: white;
     font-size: 4rem;
     padding: 1rem;
+    display: inline-block;
+}
+
+.intro h1 span{
+    display: inline-block;
+    animation: letterUp 3s ease infinite;
 }
 
 .intro p{
     color: white;
     font-size: 1.4rem;
+    display: inline-block;
 }
 
+.intro p span{
+    display: inline-block;
+    opacity: 0;
+    animation: letterUp2 1s ease forwards;
+}
+
+/*Degradado morado del header*/
+
+@keyframes moveGradient{
+    0% {background-position: 0% 100%;}
+    50% {background-position: 100% 50%;}
+    100% {background-color: 50% 100%;}
+}
+
+/*Linea bottom del header de colores*/
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/*Animación de las letra LOL*/
+
+@keyframes letterUp2{
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes letterUp{
+    0%, 66%{ transform: translateY(0);}
+    33%{ transform: translateY(-20px);}
+}
+
+
+.intro h1 span:nth-child(1)  { animation-delay: 0s; }
+.intro h1 span:nth-child(2)  { animation-delay: 0.05s; }
+.intro h1 span:nth-child(3)  { animation-delay: 0.1s; }
+.intro h1 span:nth-child(4)  { animation-delay: 0.15s; }
+.intro h1 span:nth-child(5)  { animation-delay: 0.20s; }
+.intro h1 span:nth-child(6)  { animation-delay: 0.25s; }
+.intro h1 span:nth-child(7)  { animation-delay: 0.30s; }
+.intro h1 span:nth-child(8)  { animation-delay: 0.35s; }
+.intro h1 span:nth-child(9)  { animation-delay: 0.40s; }
+.intro h1 span:nth-child(11)  { animation-delay: 0.45s; }
+.intro h1 span:nth-child(12)  { animation-delay: 0.50s; }
+.intro h1 span:nth-child(13)  { animation-delay: 0.55s; }
+.intro h1 span:nth-child(14)  { animation-delay: 0.60s; }
+.intro h1 span:nth-child(15)  { animation-delay: 0.65s; }
+.intro h1 span:nth-child(16)  { animation-delay: 0.70s; }
+.intro h1 span:nth-child(17)  { animation-delay: 0.75s; }
+.intro h1 span:nth-child(18)  { animation-delay: 0.80s; }
+.intro h1 span:nth-child(19)  { animation-delay: 0.85s; }
+
+
+/*
+    ----------------------------------------------
+        C O N T E N I D O  P R I N C I P A L
+    ----------------------------------------------
+*/
